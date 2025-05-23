@@ -16,6 +16,13 @@ function App() {
     dispatch(toggleTheme(savedTheme));
   }, [dispatch]);
 
+  useEffect(() => {
+    // Добавляем класс темы к <html>, <body> и <div id="root">
+    document.documentElement.className = theme;
+    document.body.className = theme;
+    document.getElementById('root').className = theme;
+  }, [theme]);
+
   const handleAddTodo = () => {
     if (input.trim()) {
       dispatch(addTodo(input));
